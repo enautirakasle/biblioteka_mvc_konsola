@@ -34,6 +34,7 @@ public class Main {
 				Usuario usuario = uVista.getUsuario();
 				uModelo = new UsuarioModelo();
 				
+				//TODO jonek egiteko
 				//uModelo.insert(usuario);
 				
 				break;
@@ -45,6 +46,7 @@ public class Main {
 				break;
 			case VER_USUARIO:
 				//TODO jonek egiteko VER_USUARIOS funtzionalitatean oinarrituta
+				
 
 				break;
 			case CAMBIAR_PASSWORD_USAURIO:
