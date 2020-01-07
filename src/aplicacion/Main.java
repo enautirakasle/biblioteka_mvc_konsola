@@ -35,7 +35,7 @@ public class Main {
 				uModelo = new UsuarioModelo();
 				
 				//TODO jonek egiteko
-				//uModelo.insert(usuario);
+				uModelo.insert(usuario);
 				
 				break;
 			case VER_USUARIOS:

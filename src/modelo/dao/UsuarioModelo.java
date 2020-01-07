@@ -91,19 +91,20 @@ public class UsuarioModelo extends Conector{
 //		}
 //	}
 //	
-//	public void insert(Usuario usuario) {
-//		try {
-//			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO usuarios (nombre, apellido, edad) values(?,?,?)");
-//			pst.setString(1, usuario.getNombre());
-//			pst.setString(2, usuario.getApellido());
-//			pst.setInt(3, usuario.getEdad());
-//			pst.execute();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	public void insert(Usuario usuario) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO usuarios (nombre, apellido, dni, admin, password) values(?,?,?,?,?)");
+			pst.setString(1, usuario.getNombre());
+			pst.setString(2, usuario.getApellido());
+			pst.setString(3, usuario.getDni());
+			pst.setBoolean(4, usuario.isAdmin());
+			pst.setString(5, usuario.getPassword());
+			pst.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 //
 //	
 //	public ArrayList<Usuario> selectPorNombre(String nombre){
