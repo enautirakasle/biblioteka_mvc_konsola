@@ -20,7 +20,6 @@ public class Conector {
 				e.printStackTrace();
 			}
 			
-		
 	}
 
 	public Connection getConexion() {
