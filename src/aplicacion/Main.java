@@ -3,6 +3,8 @@ package aplicacion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.security.auth.callback.ConfirmationCallback;
+
 import modelo.bean.Usuario;
 import modelo.dao.UsuarioModelo;
 import vista.UsuarioVista;
@@ -50,8 +52,7 @@ public class Main {
 				int id = new Scanner(System.in).nextInt();
 				uModelo = new UsuarioModelo();
 				Usuario usuario = uModelo.select(id);
-				System.out.println(usuario);
-				
+				System.out.println(usuario);				
 				
 
 				break;
@@ -68,11 +69,13 @@ public class Main {
 			
 				break;
 			case ELIMINAR_USUARIO:
-				//TODO jonek egiteko
-				//dnia eskatu
-				//konfirmazioa eskatu
-				//	baietz bada ezabatu
-				//	bestela ez ezabatu
+				//falta confirmar borrado
+				System.out.println("dni de usuario a borrar:");
+				String dni = new Scanner(System.in).nextLine();
+				uModelo = new UsuarioModelo();
+				uModelo.delete(dni);
+				System.out.println("Usuario borrado");
+				
 				break;
 			case SALIR:
 				System.out.println("El programa se ha cerrado....");

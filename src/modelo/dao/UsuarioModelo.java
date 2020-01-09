@@ -64,20 +64,20 @@ public class UsuarioModelo extends Conector{
 	}
 //
 //
-//	public void delete (int id){
-//		//delete from usuarios where id = 6
-//		PreparedStatement pst;
-//		try {
-//			pst = super.conexion.prepareStatement("delete from usuarios where id = ?");
-//			pst.setInt(1, id);
-//			
-//			pst.execute();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//	}
-//	
+	public void delete (String dni){
+
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("delete from usuarios where dni = ?");
+			pst.setString(1, dni);
+			
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 //	public void update(Usuario usuario){
 //		//update usuarios set nombre='mikel', apellido='badiola', edad=32 where id=5
 //		PreparedStatement pst;

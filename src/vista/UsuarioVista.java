@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import modelo.bean.Usuario;
+import modelo.dao.UsuarioModelo;
 
 public class UsuarioVista{
 	
@@ -50,4 +51,5 @@ public class UsuarioVista{
 
 		return usuario;
 	}
+	
 }
