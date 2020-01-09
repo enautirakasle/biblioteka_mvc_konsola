@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import modelo.Conector;
 import modelo.bean.Usuario;
@@ -38,6 +39,7 @@ public class UsuarioModelo extends Conector{
 	}
 	
 	public Usuario select(int id){
+		
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("select * from usuarios where id = ?");
 			pst.setInt(1, id);

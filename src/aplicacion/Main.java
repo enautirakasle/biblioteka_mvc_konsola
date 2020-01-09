@@ -31,11 +31,11 @@ public class Main {
 			switch (aukera) {
 			case CREAR_USUARIO:
 				uVista = new UsuarioVista();
-				Usuario usuario = uVista.getUsuario();
+				Usuario usuarioNuevo = uVista.getUsuario();
 				uModelo = new UsuarioModelo();
 				
-				//TODO jonek egiteko
-				uModelo.insert(usuario);
+				
+				uModelo.insert(usuarioNuevo);
 				
 				break;
 			case VER_USUARIOS:
@@ -45,7 +45,13 @@ public class Main {
 				
 				break;
 			case VER_USUARIO:
-				//TODO jonek egiteko VER_USUARIOS funtzionalitatean oinarrituta
+				
+				System.out.println("Escribe una id de usuario:");
+				int id = new Scanner(System.in).nextInt();
+				uModelo = new UsuarioModelo();
+				Usuario usuario = uModelo.select(id);
+				System.out.println(usuario);
+				
 				
 
 				break;
