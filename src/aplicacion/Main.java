@@ -57,14 +57,14 @@ public class Main {
 
 				break;
 			case CAMBIAR_PASSWORD_USAURIO:
-				//TODO jonek egiteko
-				//erabiltzaile dni-a eskatu
 				
-				//pasaihtz zaharra eskatu
+				System.out.println("Escribe dni de usuario");
+				String dniUsuario = scan.nextLine();
+				System.out.println("Escribe su nueva contraseña");
+				String nuevaContraseña = scan.nextLine();
+				uModelo = new UsuarioModelo();
+				uModelo.updatePassword(dniUsuario, nuevaContraseña);
 				
-				//pasahitz berria sartzeko esan
-				
-				//erabiltzailea aldatu datu basean
 				
 			
 				break;

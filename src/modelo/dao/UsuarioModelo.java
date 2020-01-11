@@ -93,6 +93,23 @@ public class UsuarioModelo extends Conector{
 //		}
 //	}
 //	
+	
+	public void updatePassword(String dniUsuario, String nuevaContraseña){
+	
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("update usuarios set password=? where dni=?");
+			
+			pst.setString(1, nuevaContraseña);
+			pst.setString(2, dniUsuario);
+			
+		
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void insert(Usuario usuario) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO usuarios (nombre, apellido, dni, admin, password) values(?,?,?,?,?)");
