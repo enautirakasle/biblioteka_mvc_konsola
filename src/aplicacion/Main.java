@@ -91,8 +91,8 @@ public class Main {
 
 	private static void menuPrincipal() {
 		System.out.println(CREAR_USUARIO + "- erabiltzailea sortu");
-		System.out.println(VER_USUARIO + "- erabitlzaile bat ikusi");
 		System.out.println(VER_USUARIOS + "- erabiltzaile guztiak ikusi");
+		System.out.println(VER_USUARIO + "- erabitlzaile bat ikusi");
 		System.out.println(CAMBIAR_PASSWORD_USAURIO + "- pasahitza aldatu");
 		System.out.println(ELIMINAR_USUARIO + "- erabiltzailea ezabatu");
 		System.out.println(SALIR + "- salir");
