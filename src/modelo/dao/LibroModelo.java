@@ -42,7 +42,14 @@ public class LibroModelo extends Conector{
 	}*/
 	
 	public void delete(int id) {
-		//TODO
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("delete from libros where id = ?");
+			pst.setInt(1, id);
+			pst.execute();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/*public Libro buscar(int id) {

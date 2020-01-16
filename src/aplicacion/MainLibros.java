@@ -20,7 +20,7 @@ public class MainLibros {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		
+		LibroModelo lModelo;
 		int opcion;
 		do {
 			menuDeOpciones();
@@ -32,7 +32,7 @@ public class MainLibros {
 				break;
 				
 			case MOSTRAR_LIBROS:
-				LibroModelo lModelo = new LibroModelo();
+				lModelo = new LibroModelo();
 				ArrayList <Libro> libros = lModelo.selectAll();
 				lModelo.imprimirLibros(libros);
 				break;
@@ -54,7 +54,10 @@ public class MainLibros {
 				break;
 				
 			case ELIMINAR_LIBRO:
-				//TODO
+				System.out.println("Escribe el id de libro para borrar");
+				int id = scan.nextInt();
+				lModelo = new LibroModelo();
+				lModelo.delete(id);
 				break;
 			default:
 				break;
