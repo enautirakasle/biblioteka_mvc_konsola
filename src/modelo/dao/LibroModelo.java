@@ -90,17 +90,41 @@ public class LibroModelo extends Conector{
 		}
 	}
 	
-	public void librosGordos(int numPaginas) {
-		//TODO
+	public void librosGordos(int numDePaginas) {
+		/*lo que me da error al ejecutar
+		 * 
+		 * ArrayList <Libro> librosMasLargos = new ArrayList<Libro>();
+		 
+		try {
+			Statement st = super.conexion.createStatement();
+			PreparedStatement pst = super.conexion.prepareStatement("select * from libros where num_paginas > ?");
+			pst.setInt(1, numDePaginas);
+			ResultSet rs = pst.executeQuery();
+			System.out.println(numDePaginas);
+			
+			while(rs.next()){
+				Libro libro = new Libro();
+				libro.setId(rs.getInt("id"));
+				libro.setTitulo(rs.getString("titulo"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setNum_pag(rs.getInt("num_pag"));
+				
+				librosMasLargos.add(libro);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < librosMasLargos.size(); i++) {
+			System.out.println(librosMasLargos.get(i));
+		}*/
 	}
 	
-	public void busquedaPorTitulo() {
-		//TODO
+	public void busquedaPorTitulo(String nombre) {
+		
 	}
 	
-	public void busquedaPorTitulo(String parteTitulo) {
-		//TODO
-	}
+	
 	
 	public static void imprimirLibros(ArrayList <Libro> libros) {
 		for (int i = 0; i < libros.size(); i++) {
