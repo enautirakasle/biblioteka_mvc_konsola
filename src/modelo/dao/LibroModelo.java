@@ -12,10 +12,30 @@ import modelo.bean.Usuario;
 
 public class LibroModelo extends Conector{
 	
-	/*public ArrayList<Libro> selectAll(){
+	public ArrayList<Libro> selectAll(){
 		//TODO
+	ArrayList <Libro> libros = new ArrayList<Libro>();
+	try {
+		Statement st = super.conexion.createStatement();
+		ResultSet rs = st.executeQuery("select * from libros");
+		while(rs.next()){
+			Libro libro = new Libro();
+			libro.setId(rs.getInt("id"));
+			libro.setTitulo(rs.getString("titulo"));
+			libro.setAutor(rs.getString("autor"));
+			libro.setNum_pag(rs.getInt("num_pag"));
+			
+			libros.add(libro);
+		}
+		return libros;
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 	
-	}*/
+	return libros;
+	}
+	
 	
 	/*public Libro select(String titulo) {
 		//TODO
@@ -47,5 +67,11 @@ public class LibroModelo extends Conector{
 	
 	public void busquedaPorTitulo(String parteTitulo) {
 		//TODO
+	}
+	
+	public static void imprimirLibros(ArrayList <Libro> libros) {
+		for (int i = 0; i < libros.size(); i++) {
+			System.out.println(libros.get(i));
+		}
 	}
 }

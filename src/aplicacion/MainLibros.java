@@ -1,6 +1,11 @@
 package aplicacion;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import modelo.bean.Libro;
+import modelo.bean.Usuario;
+import modelo.dao.LibroModelo;
 
 public class MainLibros {
 	static final int SALIR = 1;
@@ -10,7 +15,10 @@ public class MainLibros {
 	static final int MOSTRAR_LIBROS_LARGOS = 5;
 	static final int EDITAR_PAGINAS_LIBRO = 6;
 	static final int ELIMINAR_LIBRO = 7;
+	
+	
 	public static void main(String[] args) {
+		
 		Scanner scan = new Scanner(System.in);
 		
 		int opcion;
@@ -20,11 +28,13 @@ public class MainLibros {
 			
 			switch (opcion) {
 			case SALIR:
-				//TODO
+				System.out.println("Saliendo del programa..");
 				break;
 				
 			case MOSTRAR_LIBROS:
-				//TODO
+				LibroModelo lModelo = new LibroModelo();
+				ArrayList <Libro> libros = lModelo.selectAll();
+				lModelo.imprimirLibros(libros);
 				break;
 			
 			case MOSTRAR_LIBRO:
