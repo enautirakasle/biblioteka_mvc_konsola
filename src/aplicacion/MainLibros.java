@@ -38,7 +38,12 @@ public class MainLibros {
 				break;
 			
 			case MOSTRAR_LIBRO:
-				//TODO
+				lModelo = new LibroModelo();
+				System.out.println("Escribe el titulo del libro que quieres mostrar");
+				String titulo = new Scanner(System.in).nextLine();
+				Libro libro = lModelo.select(titulo);
+				System.out.println(libro);
+				
 				break;
 				
 			case BUSCAR:
@@ -58,11 +63,11 @@ public class MainLibros {
 				int num_paginas = new Scanner(System.in).nextInt();
 				
 				lModelo = new LibroModelo();
-				Libro libro = new Libro();
-				libro.setId(idUpdate);
-				libro.setAutor(autor);
-				libro.setNum_pag(num_paginas);
-				lModelo.update(libro);
+				Libro libroCambiado = new Libro();
+				libroCambiado.setId(idUpdate);
+				libroCambiado.setAutor(autor);
+				libroCambiado.setNum_pag(num_paginas);
+				lModelo.update(libroCambiado);
 				break;
 				
 			case ELIMINAR_LIBRO:

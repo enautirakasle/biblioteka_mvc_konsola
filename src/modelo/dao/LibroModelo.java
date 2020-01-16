@@ -13,7 +13,7 @@ import modelo.bean.Usuario;
 public class LibroModelo extends Conector{
 	
 	public ArrayList<Libro> selectAll(){
-		//TODO
+		
 	ArrayList <Libro> libros = new ArrayList<Libro>();
 	try {
 		Statement st = super.conexion.createStatement();
@@ -37,9 +37,27 @@ public class LibroModelo extends Conector{
 	}
 	
 	
-	/*public Libro select(String titulo) {
-		//TODO
-	}*/
+	public Libro select(String titulo) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select * from libros where titulo = ?");
+			pst.setString(1, titulo);
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()){
+				Libro libro = new Libro();
+				libro.setId(rs.getInt("id"));
+				libro.setTitulo(rs.getString("titulo"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setNum_pag(rs.getInt("num_pag"));
+				
+				return libro;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public void delete(int id) {
 		try {
