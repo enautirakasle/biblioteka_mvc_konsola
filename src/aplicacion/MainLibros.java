@@ -50,14 +50,26 @@ public class MainLibros {
 				break;
 				
 			case EDITAR_PAGINAS_LIBRO:
-				//TODO
+				System.out.println("Escribe id de libro, del cual quieres cambiar su autor y numero de paginas");
+				int idUpdate = scan.nextInt();
+				System.out.println("Escribe su nuevo autor");
+				String autor = new Scanner(System.in).nextLine();
+				System.out.println("Y su numero de paginas");
+				int num_paginas = new Scanner(System.in).nextInt();
+				
+				lModelo = new LibroModelo();
+				Libro libro = new Libro();
+				libro.setId(idUpdate);
+				libro.setAutor(autor);
+				libro.setNum_pag(num_paginas);
+				lModelo.update(libro);
 				break;
 				
 			case ELIMINAR_LIBRO:
 				System.out.println("Escribe el id de libro para borrar");
-				int id = scan.nextInt();
+				int idDelete = scan.nextInt();
 				lModelo = new LibroModelo();
-				lModelo.delete(id);
+				lModelo.delete(idDelete);
 				break;
 			default:
 				break;

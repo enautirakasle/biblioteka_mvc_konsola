@@ -61,7 +61,15 @@ public class LibroModelo extends Conector{
 	}*/
 	
 	public void update(Libro libro) {
-		//TODO
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("update libros set autor = ?, num_pag = ? where id = ?");
+			pst.setString(1, libro.getAutor());
+			pst.setInt(2, libro.getNum_pag());
+			pst.setInt(3, libro.getId());
+			pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void librosGordos(int numPaginas) {
