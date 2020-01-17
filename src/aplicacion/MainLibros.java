@@ -47,9 +47,11 @@ public class MainLibros {
 				break;
 				
 			case BUSCAR:
-				//Hacer ahora si puedo
-				
-				
+				lModelo = new LibroModelo();
+				System.out.println("Escribe un string, y te saldran las peliculas que contengan esas letras en su titulo");
+				String parteTitulo = new Scanner(System.in).nextLine();
+				ArrayList <Libro> librosPorTitulo = lModelo.busquedaPorTitulo(parteTitulo);
+				lModelo.imprimirPorTitulo(librosPorTitulo);
 				
 				break;
 				

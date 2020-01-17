@@ -115,8 +115,25 @@ public class LibroModelo extends Conector{
 		
 	}
 	
-	public void busquedaPorTitulo(String nombre) {
-		//Hacer ahora si puedo
+	public ArrayList<Libro> busquedaPorTitulo(String parteTitulo) {
+		ArrayList<Libro> librosPorTitulo = new ArrayList <Libro>();
+		try {
+			Statement st = super.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from libros where titulo like '%"+parteTitulo+"%'");
+			while (rs.next()) {
+				Libro libro = new Libro();
+				libro.setId(rs.getInt("id"));
+				libro.setTitulo(rs.getString("titulo"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setNum_pag(rs.getInt("num_pag"));
+				
+				librosPorTitulo.add(libro);
+			}
+			return librosPorTitulo;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return librosPorTitulo;
 	}
 	
 	
@@ -130,6 +147,14 @@ public class LibroModelo extends Conector{
 	public static void imprimirLibrosMasLargos (ArrayList <Libro> librosMasLargos) {
 		for (int i = 0; i < librosMasLargos.size(); i++) {
 			Libro libro = librosMasLargos.get(i);
+			System.out.println(libro);
+			
+		}
+	}
+	
+	public static void imprimirPorTitulo (ArrayList <Libro> librosPorTitulo) {
+		for (int i = 0; i < librosPorTitulo.size(); i++) {
+			Libro libro = librosPorTitulo.get(i);
 			System.out.println(libro);
 			
 		}
