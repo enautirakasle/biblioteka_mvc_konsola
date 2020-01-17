@@ -90,38 +90,33 @@ public class LibroModelo extends Conector{
 		}
 	}
 	
-	public void librosGordos(int numDePaginas) {
-		/*lo que me da error al ejecutar
-		 * 
-		 * ArrayList <Libro> librosMasLargos = new ArrayList<Libro>();
-		 
+	public ArrayList<Libro> librosGordos(int numDePaginas) {
+		//me da fallo
+		ArrayList<Libro> librosMasLargos = new ArrayList<Libro>();
 		try {
 			Statement st = super.conexion.createStatement();
-			PreparedStatement pst = super.conexion.prepareStatement("select * from libros where num_paginas > ?");
-			pst.setInt(1, numDePaginas);
-			ResultSet rs = pst.executeQuery();
-			System.out.println(numDePaginas);
 			
-			while(rs.next()){
+			ResultSet res = st.executeQuery("select * from  libros where num_pag > " + numDePaginas);
+			while(res.next()) {
 				Libro libro = new Libro();
-				libro.setId(rs.getInt("id"));
-				libro.setTitulo(rs.getString("titulo"));
-				libro.setAutor(rs.getString("autor"));
-				libro.setNum_pag(rs.getInt("num_pag"));
+				libro.setId(res.getInt("id"));
+				libro.setTitulo(res.getString("titulo"));
+				libro.setAutor(res.getString("autor"));
+				libro.setNum_pag(res.getInt("num_pag"));
 				
-				librosMasLargos.add(libro);
-			}
-			
+				librosMasLargos.add(libro);			
+				}
+			return librosMasLargos;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for (int i = 0; i < librosMasLargos.size(); i++) {
-			System.out.println(librosMasLargos.get(i));
-		}*/
+		return librosMasLargos;
+		
+		
 	}
 	
 	public void busquedaPorTitulo(String nombre) {
-		
+		//Hacer ahora si puedo
 	}
 	
 	
@@ -129,6 +124,14 @@ public class LibroModelo extends Conector{
 	public static void imprimirLibros(ArrayList <Libro> libros) {
 		for (int i = 0; i < libros.size(); i++) {
 			System.out.println(libros.get(i));
+		}
+	}
+	
+	public static void imprimirLibrosMasLargos (ArrayList <Libro> librosMasLargos) {
+		for (int i = 0; i < librosMasLargos.size(); i++) {
+			Libro libro = librosMasLargos.get(i);
+			System.out.println(libro);
+			
 		}
 	}
 }

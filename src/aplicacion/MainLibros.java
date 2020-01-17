@@ -47,23 +47,20 @@ public class MainLibros {
 				break;
 				
 			case BUSCAR:
-				/*lo que me da error al ejecutar
-				 * 
-				 
-				lModelo = new LibroModelo();
-				System.out.println("Escribe un nombre, para listar los libros que contengan ese nombre en su titulo");
-				String nombre = new Scanner(System.in).nextLine();
-				lModelo.busquedaPorTitulo(nombre);
-				break;*/
+				//Hacer ahora si puedo
+				
+				
+				
+				break;
 				
 			case MOSTRAR_LIBROS_LARGOS:
-				/* lo que me da error al ejecutar
-				 * 
+				//me da fallo
+				System.out.println("Escribe un numero de paginas, para mostrar los libros que tengan mas paginas que esas");
+				int numDePaginas = scan.nextInt();
 				lModelo = new LibroModelo();
-				System.out.println("Escribe un numero de paginas, para mostrar los libros con mas paginas de lo que has escrito");
-				int numDePaginas = new Scanner(System.in).nextInt();
-				lModelo.librosGordos(numDePaginas);
-				break;*/
+				ArrayList <Libro> librosLargos = lModelo.librosGordos(numDePaginas);
+				lModelo.imprimirLibrosMasLargos(librosLargos);
+				break;
 				
 			case EDITAR_PAGINAS_LIBRO:
 				System.out.println("Escribe id de libro, del cual quieres cambiar su autor y numero de paginas");
