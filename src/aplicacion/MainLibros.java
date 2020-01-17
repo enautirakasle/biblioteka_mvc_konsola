@@ -56,15 +56,15 @@ public class MainLibros {
 				break;
 				
 			case MOSTRAR_LIBROS_LARGOS:
-				//me da fallo
+				lModelo = new LibroModelo();
 				System.out.println("Escribe un numero de paginas, para mostrar los libros que tengan mas paginas que esas");
 				int numDePaginas = scan.nextInt();
-				lModelo = new LibroModelo();
 				ArrayList <Libro> librosLargos = lModelo.librosGordos(numDePaginas);
 				lModelo.imprimirLibrosMasLargos(librosLargos);
 				break;
 				
 			case EDITAR_PAGINAS_LIBRO:
+				lModelo = new LibroModelo();
 				System.out.println("Escribe id de libro, del cual quieres cambiar su autor y numero de paginas");
 				int idUpdate = scan.nextInt();
 				System.out.println("Escribe su nuevo autor");
@@ -72,7 +72,6 @@ public class MainLibros {
 				System.out.println("Y su numero de paginas");
 				int num_paginas = new Scanner(System.in).nextInt();
 				
-				lModelo = new LibroModelo();
 				Libro libroCambiado = new Libro();
 				libroCambiado.setId(idUpdate);
 				libroCambiado.setAutor(autor);

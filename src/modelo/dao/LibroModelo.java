@@ -91,7 +91,7 @@ public class LibroModelo extends Conector{
 	}
 	
 	public ArrayList<Libro> librosGordos(int numDePaginas) {
-		//me da fallo
+		
 		ArrayList<Libro> librosMasLargos = new ArrayList<Libro>();
 		try {
 			Statement st = super.conexion.createStatement();
