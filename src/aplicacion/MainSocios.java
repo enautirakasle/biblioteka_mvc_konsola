@@ -1,6 +1,12 @@
 package aplicacion;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import modelo.bean.Socio;
+import modelo.dao.SocioModelo;
+import vista.SocioVista;
+
 
 public class MainSocios {
 	static final int SALIR = 1;
@@ -12,31 +18,55 @@ public class MainSocios {
 	public static void main(String[] args) {
 		
 		
-		Scanner scan = new Scanner(System.in);
+		
 		int opcion;
+		SocioModelo sModelo;
+		SocioVista sVista;
 		do {
 		
 			menuPrincipal();
-			opcion = scan.nextInt();
+			opcion = new Scanner(System.in).nextInt();
 			
 			switch (opcion) {
 			case SALIR:
 				System.out.println("Saliendo..");
 				break;
+				
+				
 			case MOSTRAR_SOCIOS:
-				//TODO
+				sModelo = new SocioModelo();
+				sVista = new SocioVista();
+				ArrayList socios = sModelo.mostrarSocios();
+				sVista.imprimirSocios(socios);
 				break;
+				
+				
 			case MOSTRAR_SOCIO:
-				//TODO
+				sModelo = new SocioModelo();
+				System.out.println("Escribe dni del socio el cual quieres mostrar por pantalla");
+				String dni = new Scanner(System.in).nextLine();
+				sModelo.mostrarSocio(dni);
+				Socio socio = sModelo.mostrarSocio(dni);
+				System.out.println(socio);
 				break;
+				
+				
 			case BUSCAR:
-				//TODO
+				System.out.println("Escribe un caracter, y mostrara los usuarios que contengan ese caracter en su nombre o apellido");
+				char caracter = new Scanner(System.in).next().charAt(0);
 				break;
+				
+				
 			case EDITAR_SOCIO:
 				//TODO
 				break;
+				
+				
 			case ELIMINAR_SOCIO:
-				//TODO
+				sModelo = new SocioModelo();
+				System.out.println("escribe un dni, para borrar su respectivo socio");
+				String dniBorrar = new Scanner(System.in).nextLine();
+				sModelo.borrarSocio(dniBorrar);
 				break;
 			default:
 				break;
