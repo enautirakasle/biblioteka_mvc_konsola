@@ -20,6 +20,7 @@ public class SocioModelo extends Conector{
 				socio.setApellido(rs.getString("apellido"));
 				socio.setDireccion(rs.getString("direccion"));
 				socio.setPoblacion(rs.getString("poblacion"));
+				socio.setProvincia(rs.getString("provincia"));
 				socio.setDni(rs.getString("dni"));
 				
 				socios.add(socio);
@@ -50,10 +51,14 @@ public class SocioModelo extends Conector{
 		}
 		return null;
 	}
+	
 	public ArrayList<Socio> buscarPorCaracter(char caracter) {
-		ArrayList<Socio> socios = new ArrayList<Socio>();
+		ArrayList<Socio> sociosPorLetra = new ArrayList<Socio>();
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement("SELECT * FROM socios WHERE nombre LIKE "'%%'" OR apellido = ?");
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT * FROM socios WHERE nombre LIKE ? OR apellido LIKE ?");
+			
+			pst.setString(1, "%"+caracter+"%");
+			pst.setString(2, "%"+caracter+"%");
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				Socio socio = new Socio();
@@ -64,9 +69,25 @@ public class SocioModelo extends Conector{
 				socio.setPoblacion(rs.getString("poblacion"));
 				socio.setDni(rs.getString("dni"));
 				
-				socios.add(socio);
+				sociosPorLetra.add(socio);
+				
+				
 			}
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sociosPorLetra;
+	}
+	
+	public void editarSocio(String dniCambiar, String direccionCambiar, String poblacionCambiar, String provinciaCambiar) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("UPDATE socios SET direccion = ?, poblacion = ?, provincia = ? WHERE dni = ?");
+			pst.setString(1, direccionCambiar);
+			pst.setString(2, poblacionCambiar);
+			pst.setString(3, provinciaCambiar);
+			pst.setString(4, dniCambiar);
+			pst.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

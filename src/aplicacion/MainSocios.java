@@ -52,13 +52,26 @@ public class MainSocios {
 				
 				
 			case BUSCAR:
+				sModelo = new SocioModelo();
+				sVista = new SocioVista();
 				System.out.println("Escribe un caracter, y mostrara los usuarios que contengan ese caracter en su nombre o apellido");
 				char caracter = new Scanner(System.in).next().charAt(0);
+				ArrayList<Socio> sociosPorLetra = sModelo.buscarPorCaracter(caracter);
+				sVista.imprimirSociosQueTenganLetra(sociosPorLetra);
 				break;
 				
 				
 			case EDITAR_SOCIO:
-				//TODO
+				sModelo = new SocioModelo();
+				System.out.println("Escribe el dni del socio que quieras modificar sus datos");
+				String dniCambiar = new Scanner(System.in).nextLine();
+				System.out.println("Su nueva direccion :");
+				String direccionCambiar = new Scanner(System.in).nextLine();
+				System.out.println("Su nueva poblacion :");
+				String poblacionCambiar = new Scanner(System.in).nextLine();
+				System.out.println("Su nueva provincia :");
+				String provinciaCambiar = new Scanner(System.in).nextLine();
+				sModelo.editarSocio(dniCambiar, direccionCambiar, poblacionCambiar, provinciaCambiar);
 				break;
 				
 				
