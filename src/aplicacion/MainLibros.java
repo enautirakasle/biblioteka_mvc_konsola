@@ -6,6 +6,7 @@ import java.util.Scanner;
 import modelo.bean.Libro;
 import modelo.bean.Usuario;
 import modelo.dao.LibroModelo;
+import vista.LibroVista;
 
 public class MainLibros {
 	static final int SALIR = 1;
@@ -21,6 +22,7 @@ public class MainLibros {
 		
 		Scanner scan = new Scanner(System.in);
 		LibroModelo lModelo;
+		LibroVista lVista;
 		int opcion;
 		do {
 			menuDeOpciones();
@@ -33,8 +35,9 @@ public class MainLibros {
 				
 			case MOSTRAR_LIBROS:
 				lModelo = new LibroModelo();
+				lVista = new LibroVista();
 				ArrayList <Libro> libros = lModelo.selectAll();
-				lModelo.imprimirLibros(libros);
+				lVista.imprimirLibros(libros);
 				break;
 			
 			case MOSTRAR_LIBRO:
@@ -48,19 +51,21 @@ public class MainLibros {
 				
 			case BUSCAR:
 				lModelo = new LibroModelo();
+				lVista = new LibroVista();
 				System.out.println("Escribe un string, y te saldran las peliculas que contengan esas letras en su titulo");
 				String parteTitulo = new Scanner(System.in).nextLine();
 				ArrayList <Libro> librosPorTitulo = lModelo.busquedaPorTitulo(parteTitulo);
-				lModelo.imprimirPorTitulo(librosPorTitulo);
+				lVista.imprimirPorTitulo(librosPorTitulo);
 				
 				break;
 				
 			case MOSTRAR_LIBROS_LARGOS:
 				lModelo = new LibroModelo();
+				lVista = new LibroVista();
 				System.out.println("Escribe un numero de paginas, para mostrar los libros que tengan mas paginas que esas");
 				int numDePaginas = scan.nextInt();
 				ArrayList <Libro> librosLargos = lModelo.librosGordos(numDePaginas);
-				lModelo.imprimirLibrosMasLargos(librosLargos);
+				lVista.imprimirLibrosMasLargos(librosLargos);
 				break;
 				
 			case EDITAR_PAGINAS_LIBRO:

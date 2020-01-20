@@ -70,14 +70,6 @@ public class LibroModelo extends Conector{
 		}
 	}
 	
-	/*public Libro buscar(int id) {
-		//TODO
-	}*/
-	
-	/*public Libro buscar (String titulo) {
-		//TODO
-	}*/
-	
 	public void update(Libro libro) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("update libros set autor = ?, num_pag = ? where id = ?");
@@ -134,29 +126,5 @@ public class LibroModelo extends Conector{
 			e.printStackTrace();
 		}
 		return librosPorTitulo;
-	}
-	
-	
-	
-	public static void imprimirLibros(ArrayList <Libro> libros) {
-		for (int i = 0; i < libros.size(); i++) {
-			System.out.println(libros.get(i));
-		}
-	}
-	
-	public static void imprimirLibrosMasLargos (ArrayList <Libro> librosMasLargos) {
-		for (int i = 0; i < librosMasLargos.size(); i++) {
-			Libro libro = librosMasLargos.get(i);
-			System.out.println(libro);
-			
-		}
-	}
-	
-	public static void imprimirPorTitulo (ArrayList <Libro> librosPorTitulo) {
-		for (int i = 0; i < librosPorTitulo.size(); i++) {
-			Libro libro = librosPorTitulo.get(i);
-			System.out.println(libro);
-			
-		}
 	}
 }
