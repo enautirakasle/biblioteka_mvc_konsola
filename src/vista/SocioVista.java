@@ -14,12 +14,6 @@ public class SocioVista {
 		}
 	}
 	
-	public static void imprimirSociosQueTenganLetra(ArrayList <Socio> sociosPorLetra) {
-		for (int i = 0; i < sociosPorLetra.size(); i++) {
-			Socio socio = sociosPorLetra.get(i);
-			System.out.println(socio);
-		}
-	}
 	
 	public Socio getSocio() {
 		Socio nuevoSocio = new Socio();

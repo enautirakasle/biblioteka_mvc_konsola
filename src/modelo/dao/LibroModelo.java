@@ -127,4 +127,16 @@ public class LibroModelo extends Conector{
 		}
 		return librosPorTitulo;
 	}
+	
+	public void insertLibro(Libro libroNuevo) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO libros (titulo, autor, num_pag) VALUES (?,?,?)");
+			pst.setString(1, libroNuevo.getTitulo());
+			pst.setString(2, libroNuevo.getAutor());
+			pst.setInt(3, libroNuevo.getNum_pag());
+			pst.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -1,6 +1,7 @@
 package vista;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import modelo.bean.Libro;
 
@@ -23,5 +24,19 @@ public class LibroVista {
 			Libro libro = librosPorTitulo.get(i);
 			System.out.println(libro);
 		}
+	}
+	
+	public Libro getLibro() {
+		Libro libroNuevo = new Libro();
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Su titulo:");
+		libroNuevo.setTitulo(scan.nextLine());
+		System.out.println("Su autor:");
+		libroNuevo.setAutor(scan.nextLine());
+		System.out.println("Numero de paginas que tendra:");
+		libroNuevo.setNum_pag(scan.nextInt());
+		
+		return libroNuevo;
 	}
 }

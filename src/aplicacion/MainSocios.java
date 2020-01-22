@@ -58,7 +58,7 @@ public class MainSocios {
 				System.out.println("Escribe un caracter, y mostrara los usuarios que contengan ese caracter en su nombre o apellido");
 				char caracter = new Scanner(System.in).next().charAt(0);
 				ArrayList<Socio> sociosPorLetra = sModelo.buscarPorCaracter(caracter);
-				sVista.imprimirSociosQueTenganLetra(sociosPorLetra);
+				sVista.imprimirSocios(sociosPorLetra);
 				break;
 				
 				

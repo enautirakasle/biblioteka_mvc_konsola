@@ -16,6 +16,7 @@ public class MainLibros {
 	static final int MOSTRAR_LIBROS_LARGOS = 5;
 	static final int EDITAR_PAGINAS_LIBRO = 6;
 	static final int ELIMINAR_LIBRO = 7;
+	static final int CREAR_LIBRO = 8;
 	
 	
 	public static void main(String[] args) {
@@ -90,6 +91,12 @@ public class MainLibros {
 				lModelo = new LibroModelo();
 				lModelo.delete(idDelete);
 				break;
+				
+			case CREAR_LIBRO:
+				lVista = new LibroVista();
+				lModelo = new LibroModelo();
+				Libro libroNuevo = lVista.getLibro();
+				lModelo.insertLibro(libroNuevo);
 			default:
 				break;
 			}
@@ -109,5 +116,6 @@ public class MainLibros {
 		System.out.println(MOSTRAR_LIBROS_LARGOS + ". Mostrar libros largos");
 		System.out.println(EDITAR_PAGINAS_LIBRO + ". Editar");
 		System.out.println(ELIMINAR_LIBRO + ". Eliminar libro");
+		System.out.println(CREAR_LIBRO + ". crear libro");
 	}
 }
