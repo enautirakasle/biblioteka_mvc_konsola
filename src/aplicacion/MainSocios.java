@@ -15,6 +15,7 @@ public class MainSocios {
 	static final int BUSCAR = 4;
 	static final int EDITAR_SOCIO = 5;
 	static final int ELIMINAR_SOCIO = 6;
+	static final int CREAR_SOCIO = 7;
 	public static void main(String[] args) {
 		
 		
@@ -36,7 +37,7 @@ public class MainSocios {
 			case MOSTRAR_SOCIOS:
 				sModelo = new SocioModelo();
 				sVista = new SocioVista();
-				ArrayList socios = sModelo.mostrarSocios();
+				ArrayList <Socio> socios = sModelo.mostrarSocios();
 				sVista.imprimirSocios(socios);
 				break;
 				
@@ -81,6 +82,12 @@ public class MainSocios {
 				String dniBorrar = new Scanner(System.in).nextLine();
 				sModelo.borrarSocio(dniBorrar);
 				break;
+			
+			case CREAR_SOCIO:
+				sModelo = new SocioModelo();
+				sVista = new SocioVista();
+				Socio nuevoSocio = sVista.getSocio();
+				sModelo.insertarSocio(nuevoSocio);
 			default:
 				break;
 			}
@@ -96,5 +103,6 @@ public class MainSocios {
 		System.out.println(BUSCAR + " Buscar por parte del nombre");
 		System.out.println(EDITAR_SOCIO + " Editar socio");
 		System.out.println(ELIMINAR_SOCIO + " Eliminar socios");
+		System.out.println(CREAR_SOCIO + " Crear nuevo socio");
 	}
 }

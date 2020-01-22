@@ -101,4 +101,21 @@ public class SocioModelo extends Conector{
 			e.printStackTrace();
 		}
 	}
+	
+	public void insertarSocio(Socio nuevoSocio) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO socios (nombre, apellido, direccion, poblacion, provincia ,dni) VALUES (?,?,?,?,?,?)");
+			pst.setString(1, nuevoSocio.getNombre());
+			pst.setString(2, nuevoSocio.getApellido());
+			pst.setString(3, nuevoSocio.getDireccion());
+			pst.setString(4, nuevoSocio.getPoblacion());
+			pst.setString(5, nuevoSocio.getProvincia());
+			pst.setString(6, nuevoSocio.getDni());
+			System.out.println(nuevoSocio.getPoblacion());
+			pst.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
