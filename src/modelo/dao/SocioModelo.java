@@ -5,9 +5,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.Conector;
+import modelo.bean.Prestamo;
 import modelo.bean.Socio;
 
 public class SocioModelo extends Conector{
+	private ArrayList<Prestamo> prestamos;
+	
 	public ArrayList<Socio> mostrarSocios(){
 		ArrayList <Socio> socios = new ArrayList<Socio>();
 		try {
@@ -116,6 +119,10 @@ public class SocioModelo extends Conector{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public ArrayList<Socio> selectAllConPrestamos(){
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		return socios;
 	}
 }

@@ -1,5 +1,7 @@
 package modelo.bean;
 
+import java.util.ArrayList;
+
 public class Socio {
 	private int id;
 	private String nombre;
@@ -8,6 +10,8 @@ public class Socio {
 	private String poblacion;
 	private String provincia;
 	private String dni;
+	private ArrayList<Prestamo> prestamos;
+	
 	public int getId() {
 		return id;
 	}

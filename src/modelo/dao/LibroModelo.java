@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.Conector;
 import modelo.bean.Libro;
+import modelo.bean.Prestamo;
+import modelo.bean.Socio;
 import modelo.bean.Usuario;
 
 public class LibroModelo extends Conector{
+	private ArrayList<Prestamo> prestamos;
 	
 	public ArrayList<Libro> selectAll(){
 		
@@ -138,5 +141,10 @@ public class LibroModelo extends Conector{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Socio> selectAllConPrestamos(){
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		return socios;
 	}
 }

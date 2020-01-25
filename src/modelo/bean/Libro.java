@@ -1,10 +1,14 @@
 package modelo.bean;
 
+import java.util.ArrayList;
+
 public class Libro {
 	private int id;
 	private String titulo;
 	private String autor;
 	private int num_pag;
+	private ArrayList<Prestamo> prestamos;
+	
 	public int getId() {
 		return id;
 	}
