@@ -13,7 +13,6 @@ import modelo.bean.Socio;
 import modelo.bean.Usuario;
 
 public class LibroModelo extends Conector{
-	private ArrayList<Prestamo> prestamos;
 	
 	public ArrayList<Libro> selectAll(){
 		
