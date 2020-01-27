@@ -58,10 +58,6 @@ public class PrestamoModelo extends Conector {
 		return prestamos;
 	}
 	
-	public void cargarDatos() {
-		
-	}
-	
 	public ArrayList<Prestamo> noDevueltos(){
 		
 		return prestamos;
