@@ -51,8 +51,8 @@ public class PrestamoModelo extends Conector {
 	}
 	
 	public ArrayList<Prestamo> noDevueltos(){
-		
-		return prestamos;
+		//TODO 
+		return null;
 	}
 	
 	public ArrayList<Socio> prestamosDeSocio(String dni){
