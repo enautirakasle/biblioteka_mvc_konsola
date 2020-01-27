@@ -9,7 +9,7 @@ import modelo.bean.Prestamo;
 import modelo.bean.Socio;
 
 public class SocioModelo extends Conector{
-	private ArrayList<Prestamo> prestamos;
+	
 	
 	public ArrayList<Socio> mostrarSocios(){
 		ArrayList <Socio> socios = new ArrayList<Socio>();
@@ -122,6 +122,7 @@ public class SocioModelo extends Conector{
 	}
 	
 	public ArrayList<Socio> selectAllConPrestamos(){
+		//TODO egiteko dago ikusi libroko selectAllConPrestamos()
 		ArrayList<Socio> socios = new ArrayList<Socio>();
 		return socios;
 	}
