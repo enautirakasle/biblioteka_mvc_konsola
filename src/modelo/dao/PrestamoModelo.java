@@ -13,15 +13,7 @@ import modelo.bean.Socio;
 import vista.PrestamoVista;
 
 public class PrestamoModelo extends Conector {
-	private ArrayList<Prestamo> prestamos;
 
-	public ArrayList<Prestamo> getPrestamos() {
-		return prestamos;
-	}
-
-	public void setPrestamos(ArrayList<Prestamo> prestamos) {
-		this.prestamos = prestamos;
-	}
 	
 	public ArrayList<Prestamo> selectAll(){
 		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
