@@ -35,6 +35,7 @@ public class Prestamo {
 	@Override
 	public String toString() {
 		return "Prestamo [libro=" + libro + ", socio=" + socio + ", devuelto=" + devuelto + ", fecha=" + fecha + "]";
+		//return "nombre socio: " + this.socio.getNombre() + " libro: " + this.libro.getTitulo() + " fecha: " + this.fecha;
 	}
 	
 	

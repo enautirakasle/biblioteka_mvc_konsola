@@ -59,7 +59,7 @@ public class PrestamoModelo extends Conector {
 	}
 	
 	public void cargarDatos() {
-		
+		this.prestamos = this.selectAll();
 	}
 	
 	public ArrayList<Prestamo> noDevueltos(){
