@@ -33,10 +33,18 @@ public class Libro {
 	public void setNum_pag(int num_pag) {
 		this.num_pag = num_pag;
 	}
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
 	@Override
 	public String toString() {
-		return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", num_pag=" + num_pag + "]";
+		return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", num_pag=" + num_pag + ", prestamos="
+				+ prestamos + "]";
 	}
+
 	
 	
 }

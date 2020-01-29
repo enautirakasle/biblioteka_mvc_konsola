@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 import modelo.Conector;
 import modelo.bean.Libro;
@@ -13,7 +14,6 @@ import modelo.bean.Socio;
 import modelo.bean.Usuario;
 
 public class LibroModelo extends Conector{
-	private ArrayList<Prestamo> prestamos;
 	
 	public ArrayList<Libro> selectAll(){
 		
@@ -143,8 +143,16 @@ public class LibroModelo extends Conector{
 		}
 	}
 	
-	public ArrayList<Socio> selectAllConPrestamos(){
-		ArrayList<Socio> socios = new ArrayList<Socio>();
-		return socios;
+	public ArrayList<Libro> selectAllConPrestamos(){
+		ArrayList<Libro> libros = this.selectAll();
+		PrestamoModelo prestamoModelo = new PrestamoModelo();
+		
+		Iterator<Libro> i = libros.iterator();
+		while(i.hasNext()){
+			Libro libro = i.next();
+			libro.setPrestamos(prestamoModelo.prestamosDeLibro(libro.getId()));
+		}
+		
+		return libros;
 	}
 }

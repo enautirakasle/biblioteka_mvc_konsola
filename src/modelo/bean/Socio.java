@@ -54,6 +54,12 @@ public class Socio {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
 	@Override
 	public String toString() {
 		return "Socio [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
