@@ -6,12 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import modelo.Conector;
 import modelo.bean.Libro;
 import modelo.bean.Prestamo;
 import modelo.bean.Socio;
+import vista.LibroVista;
 import vista.PrestamoVista;
+import vista.SocioVista;
 
 public class PrestamoModelo extends Conector {
 
@@ -143,18 +146,75 @@ public class PrestamoModelo extends Conector {
 	}
 	
 	public ArrayList<Socio> sociosQueHanLeido(String titulo){
-		//TODO
-		ArrayList<Socio> socios = new ArrayList<Socio>();
-		return socios;
+		ArrayList <Socio> sociosQueHanLeido = new ArrayList<Socio>();
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT socios.* FROM (prestamos join libros on prestamos.id_libro=libros.id) join socios on prestamos.id_socio=socios.id where libros.titulo = ?");
+			pst.setString(1, titulo);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				ArrayList <Prestamo> prestamos = selectAll();
+				Socio socio = new Socio();
+				socio.setId(rs.getInt("socios.id"));
+				socio.setNombre(rs.getString("socios.nombre"));
+				socio.setApellido(rs.getString("socios.apellido"));
+				socio.setDireccion(rs.getString("socios.direccion"));
+				socio.setPoblacion(rs.getString("socios.poblacion"));
+				socio.setProvincia(rs.getString("socios.provincia"));
+				socio.setDni(rs.getString("socios.dni"));
+				socio.setPrestamos(prestamos);
+				
+				sociosQueHanLeido.add(socio);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sociosQueHanLeido;
 	}
 	
 	public void insertar(Prestamo prestamo) {
-		//TODO
+		SocioVista sVista = new SocioVista();
+		LibroVista lVista = new LibroVista();
+		try {
+			Scanner scan = new Scanner(System.in);
+			
+			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO prestamos(id_libro, id_socio, fecha, devuelto) VALUES (?, ?, ?, ?)");
+			Libro libro = new Libro();
+			libro.setId(lVista.getLibro().getId());
+			Socio socio = new Socio();
+			socio.setId(sVista.getSocio().getId());
+			
+			pst.setInt(1, libro.getId());
+			pst.setInt(2, socio.getId());
+			pst.setDate(3, prestamo.getFecha());
+			pst.setBoolean(4, prestamo.isDevuelto());;
+			
+			pst.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
 	public void finalizar(Prestamo prestamo) {
-		//TODO
+		SocioVista sVista = new SocioVista();
+		LibroVista lVista = new LibroVista();
+		try {
+			Scanner scan = new Scanner(System.in);
+			
+			PreparedStatement pst = super.conexion.prepareStatement("UPDATE prestamos SET devuelto=? WHERE id_libro=? and id_socio=?");
+			Libro libro = new Libro();
+			libro.setId(lVista.getLibro().getId());
+			Socio socio = new Socio();
+			socio.setId(sVista.getSocio().getId());
+			
+			pst.setBoolean(1, prestamo.isDevuelto());
+			pst.setInt(2, libro.getId());
+			pst.setInt(3, socio.getId());
+			
+			pst.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

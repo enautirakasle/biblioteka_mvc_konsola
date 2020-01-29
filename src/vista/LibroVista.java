@@ -29,7 +29,6 @@ public class LibroVista {
 	public Libro getLibro() {
 		Libro libroNuevo = new Libro();
 		Scanner scan = new Scanner(System.in);
-		
 		System.out.println("Su titulo:");
 		libroNuevo.setTitulo(scan.nextLine());
 		System.out.println("Su autor:");

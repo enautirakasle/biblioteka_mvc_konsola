@@ -17,6 +17,8 @@ public class SocioVista {
 	
 	public Socio getSocio() {
 		Socio nuevoSocio = new Socio();
+		System.out.println("Su id:");
+		nuevoSocio.setId(new Scanner(System.in).nextInt());
 		System.out.println("Escribe nombre para nuevo socio:");
 		nuevoSocio.setNombre(new Scanner(System.in).nextLine()); 
 		System.out.println("Su apellido:");

@@ -6,9 +6,11 @@ import javax.security.auth.callback.ConfirmationCallback;
 
 import modelo.bean.Libro;
 import modelo.bean.Prestamo;
+import modelo.bean.Socio;
 import modelo.dao.PrestamoModelo;
 import vista.LibroVista;
 import vista.PrestamoVista;
+import vista.SocioVista;
 
 public class MainPrestamos {
 	static final int SALIR = 0;
@@ -17,7 +19,7 @@ public class MainPrestamos {
 	public static void main(String[] args) {
 		PrestamoModelo pModelo;
 		PrestamoVista pVista;
-		
+
 		int opcion;
 		do {
 			menuPrincipal();
@@ -37,7 +39,6 @@ public class MainPrestamos {
 				break;
 			}
 		} while (opcion != SALIR);
-	
 	}
 	
 	public static void menuPrincipal() {
