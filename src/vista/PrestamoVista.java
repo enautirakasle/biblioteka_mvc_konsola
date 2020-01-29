@@ -12,4 +12,5 @@ public class PrestamoVista {
 			System.out.println(prestamo);
 		}
 	}
+	
 }

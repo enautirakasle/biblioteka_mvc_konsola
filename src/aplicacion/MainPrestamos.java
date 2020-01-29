@@ -3,8 +3,11 @@ package aplicacion;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.security.auth.callback.ConfirmationCallback;
+
+import modelo.bean.Libro;
 import modelo.bean.Prestamo;
 import modelo.dao.PrestamoModelo;
+import vista.LibroVista;
 import vista.PrestamoVista;
 
 public class MainPrestamos {
@@ -34,6 +37,7 @@ public class MainPrestamos {
 				break;
 			}
 		} while (opcion != SALIR);
+	
 	}
 	
 	public static void menuPrincipal() {
