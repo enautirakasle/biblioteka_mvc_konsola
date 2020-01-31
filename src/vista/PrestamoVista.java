@@ -1,10 +1,15 @@
 package vista;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import modelo.bean.Libro;
 import modelo.bean.Prestamo;
+import modelo.bean.Socio;
+import modelo.dao.PrestamoModelo;
 
 public class PrestamoVista {
+	PrestamoModelo pModelo;
 	public static void imprimirPrestamos(ArrayList<Prestamo> prestamos) {
 		for (int i = 0; i < prestamos.size(); i++) {
 			Prestamo prestamo = prestamos.get(i);
@@ -12,5 +17,6 @@ public class PrestamoVista {
 			System.out.println(prestamo);
 		}
 	}
+	
 	
 }

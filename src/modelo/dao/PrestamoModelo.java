@@ -195,22 +195,16 @@ public class PrestamoModelo extends Conector {
 		
 	}
 	
-	public void finalizar(Prestamo prestamo) {
-		SocioVista sVista = new SocioVista();
-		LibroVista lVista = new LibroVista();
+	public void devolverPrestamo(Prestamo prestamo) {
+		
 		try {
 			Scanner scan = new Scanner(System.in);
 			
 			PreparedStatement pst = super.conexion.prepareStatement("UPDATE prestamos SET devuelto=? WHERE id_libro=? and id_socio=?");
-			Libro libro = new Libro();
-			libro.setId(lVista.getLibro().getId());
-			Socio socio = new Socio();
-			socio.setId(sVista.getSocio().getId());
 			
 			pst.setBoolean(1, prestamo.isDevuelto());
-			pst.setInt(2, libro.getId());
-			pst.setInt(3, socio.getId());
-			
+			pst.setInt(2, prestamo.getLibro().getId());
+			pst.setInt(3, prestamo.getSocio().getId());
 			pst.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
