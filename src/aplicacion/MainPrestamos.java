@@ -18,8 +18,8 @@ import vista.SocioVista;
 public class MainPrestamos {
 	static final int SALIR = 0;
 	static final int MOSTRAR_PRESTAMOS = 1;
-	static final int VER_PRESTAMOS_DE_USUARIO = 2;
-	static final int VER_PRESTAMOS_PENDIENTES_DE_USUARIO = 3;
+	static final int VER_PRESTAMOS_DE_SOCIO = 2;
+	static final int VER_PRESTAMOS_PENDIENTES_DE_SOCIO = 3;
 	static final int VER_INFO_DE_LIBRO = 4;
 	static final int REALIZAR_PRESTAMO = 5;
 	static final int DEVOLVER_PRESTAMO = 6;
@@ -44,10 +44,16 @@ public class MainPrestamos {
 				pVista.imprimirPrestamos(prestamos);
 				System.out.println("");
 				break;
-			case VER_PRESTAMOS_DE_USUARIO:
-				//TODO
+			case VER_PRESTAMOS_DE_SOCIO:
+				pModelo = new PrestamoModelo();
+				pVista = new PrestamoVista();
+				//DNI eskatu eta socio horren prestamo guztiak ikusiko dira, liburu izena, prestamo data, devuelto..
+				System.out.println("Escribe dni de socio");
+				String dni = new Scanner(System.in).nextLine();
+				ArrayList<Prestamo> prestamosDeSocio = pModelo.prestamosDeSocio(dni);
+				pVista.imprimirPrestamos(prestamosDeSocio);
 				break;
-			case VER_PRESTAMOS_PENDIENTES_DE_USUARIO:
+			case VER_PRESTAMOS_PENDIENTES_DE_SOCIO:
 				//TODO
 				break;
 			case VER_INFO_DE_LIBRO:
@@ -141,8 +147,8 @@ public class MainPrestamos {
 	public static void menuPrincipal() {
 		System.out.println(SALIR + ". Salir");
 		System.out.println(MOSTRAR_PRESTAMOS + ". Mostrar todos los prestamos");
-		System.out.println(VER_PRESTAMOS_DE_USUARIO + ". Mostrar prestamos de usuario");
-		System.out.println(VER_PRESTAMOS_PENDIENTES_DE_USUARIO + ". ver prestamos sin devolver de usuario");
+		System.out.println(VER_PRESTAMOS_DE_SOCIO + ". Mostrar prestamos de usuario");
+		System.out.println(VER_PRESTAMOS_PENDIENTES_DE_SOCIO + ". ver prestamos sin devolver de usuario");
 		System.out.println(VER_INFO_DE_LIBRO + ". Ver informacion de libro");
 		System.out.println(REALIZAR_PRESTAMO + ". Realizar prestamo");
 		System.out.println(DEVOLVER_PRESTAMO + ". Devolver prestamo");

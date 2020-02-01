@@ -90,7 +90,7 @@ public class PrestamoModelo extends Conector {
 		ArrayList<Prestamo> prestamosDeSocio = new ArrayList<Prestamo>();
 		try {
 			
-			PreparedStatement pst = super.conexion.prepareStatement("SELECT prestamos.*, libros.titulo, libros.autor, libros.num_pag, socios.nombre, socios.apellido, socios.dni, socios.direccion, socios.poblacion, socios.provincia FROM (prestamos join libros on prestamos.id_libro=libros.id) join socios on prestamos.id_socio=socios.id where dni = ?");
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT prestamos.*, libros.titulo, libros.autor, libros.num_pag, socios.nombre, socios.apellido, socios.dni, socios.direccion, socios.poblacion, socios.provincia FROM (prestamos join libros on prestamos.id_libro=libros.id) join socios on prestamos.id_socio=socios.id where socios.dni = ?");
 			pst.setString(1, dni);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
