@@ -8,7 +8,9 @@ import javax.security.auth.callback.ConfirmationCallback;
 import modelo.bean.Libro;
 import modelo.bean.Prestamo;
 import modelo.bean.Socio;
+import modelo.dao.LibroModelo;
 import modelo.dao.PrestamoModelo;
+import modelo.dao.SocioModelo;
 import vista.LibroVista;
 import vista.PrestamoVista;
 import vista.SocioVista;
@@ -24,7 +26,8 @@ public class MainPrestamos {
 	public static void main(String[] args) {
 		PrestamoModelo pModelo;
 		PrestamoVista pVista;
-
+		LibroModelo lModelo;
+		SocioModelo sModelo;
 		int opcion;
 		do {
 			menuPrincipal();
@@ -52,6 +55,8 @@ public class MainPrestamos {
 				break;
 			case REALIZAR_PRESTAMO:
 				pModelo = new PrestamoModelo();
+				lModelo = new LibroModelo();
+				sModelo = new SocioModelo();
 				Prestamo prestamo = new Prestamo();
 				Libro libro = new Libro();
 				Socio socio = new Socio();
@@ -61,29 +66,69 @@ public class MainPrestamos {
 				System.out.println("Escribe titulo de libro");
 				String tituloLibro = new Scanner(System.in).nextLine();
 				
-				ArrayList<Prestamo> prestamosBuscar = pModelo.selectAll();
-				for (int i = 0; i < prestamosBuscar.size(); i++) {
-					if(prestamosBuscar.get(i).getSocio().getDni().equals(dniSocio) && prestamosBuscar.get(i).getLibro().getTitulo().equals(tituloLibro)) {
-						int idSocio = prestamosBuscar.get(i).getSocio().getId();
-						int idLibro = prestamosBuscar.get(i).getLibro().getId();
+				ArrayList<Libro> libros = lModelo.selectAll();
+				for (int i = 0; i < libros.size(); i++) {
+					Libro unLibro = libros.get(i);
+					if(unLibro.getTitulo().equals(tituloLibro)) {
+						int idLibro = unLibro.getId();
 						libro.setId(idLibro);
-						socio.setId(idSocio);
 						
 					}
 				}
+				ArrayList<Socio> socios = sModelo.mostrarSocios();
+				for (int i = 0; i < socios.size(); i++) {
+					Socio unSocio = socios.get(i);
+					if(unSocio.getDni().equals(dniSocio)) {
+						int idSocio = unSocio.getId();
+						socio.setId(idSocio);
+					}
+				}
 				Date fecha = new Date();
-				System.out.println(fecha);
+				
 				
 				prestamo.setLibro(libro);
 				prestamo.setSocio(socio);
-				prestamo.setDevuelto(false);
-				//java.util.Datetik java.sql.Date-ra pasatu dut, pasa dizudan adibidean egiten den antzera
 				prestamo.setFecha(new java.sql.Date(fecha.getTime()));
-				pModelo.devolverPrestamo(prestamo);
+				prestamo.setDevuelto(false);
+				
+				pModelo.insertar(prestamo);
 				
 				break;
 			case DEVOLVER_PRESTAMO:
-				//TODO
+				pModelo = new PrestamoModelo();
+				lModelo = new LibroModelo();
+				sModelo = new SocioModelo();
+				System.out.println("Escribe dni de socio");
+				String dnisocio = new Scanner(System.in).nextLine();
+				System.out.println("Escribe titulo de libro");
+				String titulolibro = new Scanner(System.in).nextLine();
+				Prestamo prestamoO = new Prestamo();
+				Libro libroO = new Libro();
+				Socio socioO = new Socio();
+				
+				ArrayList<Libro> librosS = lModelo.selectAll();
+				for (int i = 0; i < librosS.size(); i++) {
+					Libro unLibro = librosS.get(i);
+					if(unLibro.getTitulo().equals(titulolibro)) {
+						int idlibro = unLibro.getId();
+						libroO.setId(idlibro);
+						
+					}
+				}
+				ArrayList<Socio> sociosS = sModelo.mostrarSocios();
+				for (int i = 0; i < sociosS.size(); i++) {
+					Socio unSocio = sociosS.get(i);
+					if(unSocio.getDni().equals(dnisocio)) {
+						int idSocio = unSocio.getId();
+						socioO.setId(idSocio);
+					}
+				}
+				
+				prestamoO.setLibro(libroO);
+				prestamoO.setSocio(socioO);
+				prestamoO.setDevuelto(true);
+				
+				pModelo.devolverPrestamo(prestamoO);
 				break;
 				
 			default:

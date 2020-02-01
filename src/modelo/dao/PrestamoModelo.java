@@ -172,23 +172,19 @@ public class PrestamoModelo extends Conector {
 	}
 	
 	public void insertar(Prestamo prestamo) {
-		SocioVista sVista = new SocioVista();
-		LibroVista lVista = new LibroVista();
 		try {
-			Scanner scan = new Scanner(System.in);
 			
 			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO prestamos(id_libro, id_socio, fecha, devuelto) VALUES (?, ?, ?, ?)");
-			Libro libro = new Libro();
-			libro.setId(lVista.getLibro().getId());
-			Socio socio = new Socio();
-			socio.setId(sVista.getSocio().getId());
 			
-			pst.setInt(1, libro.getId());
-			pst.setInt(2, socio.getId());
+			
+			pst.setInt(1, prestamo.getLibro().getId());
+			pst.setInt(2, prestamo.getSocio().getId());
 			pst.setDate(3, prestamo.getFecha());
-			pst.setBoolean(4, prestamo.isDevuelto());;
+			pst.setBoolean(4, prestamo.isDevuelto());
 			
 			pst.execute();
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -198,7 +194,7 @@ public class PrestamoModelo extends Conector {
 	public void devolverPrestamo(Prestamo prestamo) {
 		
 		try {
-			Scanner scan = new Scanner(System.in);
+			
 			
 			PreparedStatement pst = super.conexion.prepareStatement("UPDATE prestamos SET devuelto=? WHERE id_libro=? and id_socio=?");
 			
