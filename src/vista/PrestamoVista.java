@@ -18,5 +18,11 @@ public class PrestamoVista {
 		}
 	}
 	
+	public String getDniSocio() {
+		System.out.println("Escribe dni de socio");
+		String dni = new Scanner(System.in).nextLine();
+		return dni;
+	}
+	
 	
 }

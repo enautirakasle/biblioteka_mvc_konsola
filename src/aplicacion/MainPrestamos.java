@@ -47,14 +47,22 @@ public class MainPrestamos {
 			case VER_PRESTAMOS_DE_SOCIO:
 				pModelo = new PrestamoModelo();
 				pVista = new PrestamoVista();
-				//DNI eskatu eta socio horren prestamo guztiak ikusiko dira, liburu izena, prestamo data, devuelto..
+
 				System.out.println("Escribe dni de socio");
 				String dni = new Scanner(System.in).nextLine();
 				ArrayList<Prestamo> prestamosDeSocio = pModelo.prestamosDeSocio(dni);
 				pVista.imprimirPrestamos(prestamosDeSocio);
 				break;
 			case VER_PRESTAMOS_PENDIENTES_DE_SOCIO:
-				//TODO
+				
+				pModelo = new PrestamoModelo();
+				pVista = new PrestamoVista();
+				
+				System.out.println("Escribe dni de socio");
+				String dniS = new Scanner(System.in).nextLine();
+				ArrayList <Prestamo> noDevueltos = pModelo.noDevueltos(dniS);
+				pVista.imprimirPrestamos(noDevueltos);
+				
 				break;
 			case VER_INFO_DE_LIBRO:
 				//TODO
@@ -130,9 +138,10 @@ public class MainPrestamos {
 					}
 				}
 				
+				prestamoO.setDevuelto(true);
 				prestamoO.setLibro(libroO);
 				prestamoO.setSocio(socioO);
-				prestamoO.setDevuelto(true);
+				
 				
 				pModelo.devolverPrestamo(prestamoO);
 				break;

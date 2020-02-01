@@ -55,11 +55,12 @@ public class PrestamoModelo extends Conector {
 	}
 	
 
-	public ArrayList<Prestamo> noDevueltos(){
+	public ArrayList<Prestamo> noDevueltos(String dniS){
 		ArrayList<Prestamo> noDevueltos = new ArrayList<Prestamo>();
 		try {
-			Statement st = super.conexion.createStatement();
-			ResultSet rs = st.executeQuery("SELECT prestamos.*, libros.titulo, libros.autor, libros.num_pag, socios.nombre, socios.apellido, socios.dni, socios.direccion, socios.poblacion, socios.provincia FROM (prestamos join libros on prestamos.id_libro=libros.id) JOIN socios ON prestamos.id_socio=socios.id WHERE devuelto=false");
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT prestamos.*, libros.titulo, libros.autor, libros.num_pag, socios.nombre, socios.apellido, socios.dni, socios.direccion, socios.poblacion, socios.provincia FROM (prestamos join libros on prestamos.id_libro=libros.id) JOIN socios ON prestamos.id_socio=socios.id WHERE socios.dni = ? AND devuelto=false");
+			pst.setString(1, dniS);
+			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				Libro libro = new Libro();
 				libro.setTitulo(rs.getString("libros.titulo"));
