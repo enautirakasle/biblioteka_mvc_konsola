@@ -105,7 +105,7 @@ public class MainPrestamos {
 				Prestamo prestamoO = new Prestamo();
 				Libro libroO = new Libro();
 				Socio socioO = new Socio();
-				
+			
 				ArrayList<Libro> librosS = lModelo.selectAll();
 				for (int i = 0; i < librosS.size(); i++) {
 					Libro unLibro = librosS.get(i);
