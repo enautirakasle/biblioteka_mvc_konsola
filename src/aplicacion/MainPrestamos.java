@@ -77,7 +77,8 @@ public class MainPrestamos {
 				prestamo.setLibro(libro);
 				prestamo.setSocio(socio);
 				prestamo.setDevuelto(false);
-				prestamo.setFecha(fecha);
+				//java.util.Datetik java.sql.Date-ra pasatu dut, pasa dizudan adibidean egiten den antzera
+				prestamo.setFecha(new java.sql.Date(fecha.getTime()));
 				pModelo.devolverPrestamo(prestamo);
 				
 				break;
