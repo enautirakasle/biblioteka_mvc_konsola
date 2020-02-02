@@ -208,6 +208,29 @@ public class PrestamoModelo extends Conector {
 		}
 		
 	}
+	
+	public ArrayList<Libro> infoDeLibro() {
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT libros.*, prestamos.devuelto FROM libros JOIN prestamos ON libros.id = prestamos.id_libro GROUP BY id_libro");
+			ResultSet res = pst.executeQuery();
+			while(res.next()) {
+				ArrayList <Prestamo> prestamos = selectAll();
+				
+				Libro libro = new Libro();
+				libro.setId(res.getInt("libros.id"));
+				libro.setTitulo(res.getString("libros.titulo"));
+				libro.setAutor(res.getString("libros.autor"));
+				libro.setNum_pag(res.getInt("libros.num_pag"));
+				libro.setPrestamos(prestamos);
+				
+				libros.add(libro);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return libros;
+	}
 
 	/**
 	 * 

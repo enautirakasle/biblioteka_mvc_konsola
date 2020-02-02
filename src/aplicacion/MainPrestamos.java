@@ -27,6 +27,7 @@ public class MainPrestamos {
 		PrestamoModelo pModelo;
 		PrestamoVista pVista;
 		LibroModelo lModelo;
+		LibroVista lVista;
 		SocioModelo sModelo;
 		int opcion;
 		do {
@@ -65,7 +66,11 @@ public class MainPrestamos {
 				
 				break;
 			case VER_INFO_DE_LIBRO:
-				//TODO
+				lModelo = new LibroModelo();
+				lVista = new LibroVista();
+				pModelo = new PrestamoModelo();
+				ArrayList <Libro> infoLibros = pModelo.infoDeLibro();
+				lVista.imprimirLibros(infoLibros);
 				break;
 			case REALIZAR_PRESTAMO:
 				pModelo = new PrestamoModelo();
